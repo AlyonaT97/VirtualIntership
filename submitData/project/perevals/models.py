@@ -62,7 +62,7 @@ class Perevals(models.Model):
     status = models.CharField(max_length=2, choices=CHOICES, default=new)
     add_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
 
-    level_id = models.ForeignKey(Level, on_delete=models.CASCADE, default=1)
+    level_id = models.ForeignKey(Level, on_delete=models.CASCADE)
     user_id = models.ForeignKey(Users, on_delete=models.CASCADE)
     coord_id = models.OneToOneField(Coords, on_delete=models.CASCADE)
 
