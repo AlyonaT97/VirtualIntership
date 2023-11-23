@@ -3,7 +3,7 @@ from django.core.cache import cache
 
 
 class Users(models.Model):
-    email = models.CharField(max_length=128, unique=True)
+    email = models.EmailField(unique=True)
     full_name = models.CharField(max_length=128, verbose_name='Полное имя')
     phone = models.IntegerField(unique=True, verbose_name='Телефон')
 
@@ -18,10 +18,24 @@ class Coords(models.Model):
 
 
 class Level(models.Model):
-    winter = models.CharField(max_length=2, verbose_name='Зима')
-    summer = models.CharField(max_length=2, verbose_name='Лето')
-    autumn = models.CharField(max_length=2, verbose_name='Осень')
-    spring = models.CharField(max_length=2, verbose_name='Весна')
+    LEVEL = [
+        ('1b', '1Б'),
+        ('2a', '2А'),
+        ('2b', '2Б'),
+        ('3a', '3А'),
+        ('3b', '3Б'),
+        ('4a', '4А'),
+        ('4b', '4Б'),
+        ('5a', '5А'),
+        ('5b', '5Б'),
+        ('6a', '6А'),
+        ('6b', '6Б')
+    ]
+
+    winter = models.CharField(max_length=2, choices=LEVEL, verbose_name='Зима')
+    summer = models.CharField(max_length=2, choices=LEVEL, verbose_name='Лето')
+    autumn = models.CharField(max_length=2, choices=LEVEL, verbose_name='Осень')
+    spring = models.CharField(max_length=2, choices=LEVEL, verbose_name='Весна')
 
     def str(self):
         return f'Уровень сложности перевала в зимнее время - {self.winter}, в летнее - {self.summer}, ' \
@@ -48,7 +62,7 @@ class Perevals(models.Model):
     status = models.CharField(max_length=2, choices=CHOICES, default=new)
     add_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
 
-    level_id = models.ForeignKey(Level, on_delete=models.CASCADE, default=Level.summer)
+    level_id = models.ForeignKey(Level, on_delete=models.CASCADE, default=1)
     user_id = models.ForeignKey(Users, on_delete=models.CASCADE)
     coord_id = models.OneToOneField(Coords, on_delete=models.CASCADE)
 
@@ -78,4 +92,17 @@ class PerevalImages(models.Model):
 
 
 class SprActivitiesTypes(models.Model):
-    title = models.CharField(max_length=128, verbose_name='Способ передвижения')
+    mountaining = 'MN'
+    hiking = 'HK'
+    skiing = 'SK'
+    biking = 'BK'
+    mountain_hiking = 'MH'
+    TYPE = [
+        (mountaining, 'Горный'),
+        (hiking, 'Пеший'),
+        (skiing, 'Лыжный'),
+        (biking, 'Велосипедный'),
+        (mountain_hiking, 'Горно-пеший')
+    ]
+
+    title = models.CharField(max_length=128, choices=TYPE, verbose_name='Тип похода')
