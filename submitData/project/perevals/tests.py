@@ -1,4 +1,5 @@
 from django.urls import reverse
+from django.conf import settings
 from rest_framework import status
 
 from django.test import TestCase
@@ -6,6 +7,9 @@ from rest_framework.test import APITestCase
 
 from .models import Perevals, Coords, Users, Level
 from .serializers import PerevalsSerializer
+
+
+settings.configure(DEBUG=True)
 
 
 class MountApiTestCase(APITestCase):
