@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'perevals',
     'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
