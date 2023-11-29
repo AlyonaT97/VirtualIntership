@@ -1,0 +1,1029 @@
+openapi: 3.0.2
+info:
+  title: 'submitData'
+  version: "0.1"
+paths:
+  /perevals/:
+    get:
+      operationId: listPerevals
+      description: 'List of perevals'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pereval'
+            description: ''
+      tags:
+        - perevals
+    post:
+      operationId: createPereval
+      description: 'Create pereval'
+      parameters:
+        - name: title
+          in: path
+          required: true
+          description: A title of Pereval.
+          schema:
+            type: string
+        - name: beautyTitle
+          in: path
+          required: true
+          description: A common title of Pereval
+          schema:
+            type: string
+        - name: other_titles
+          in: path
+          required: false
+          description: Another title of Pereval
+          schema:
+            type: string
+        - name: connect
+          in: path
+          required: false
+          description:
+          schema:
+            type: string
+        - name: level_id
+          in: path
+          required: true
+          description: Pereval's difficulty level
+          schema:
+            type: integer
+        - name: coord_id
+          in: path
+          required: true
+          description: Pereval's coords
+          schema:
+            type: integer
+        - name: user_id
+          in: path
+          required: true
+          description: User created this Pereval
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pereval'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pereval'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Pereval'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pereval'
+          description: ''
+      tags:
+      - perevals
+  /perevals/{id}/:
+    get:
+      operationId: retrievePereval
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this pereval.
+          schema:
+            type: integer
+        - name: title
+          in: path
+          required: false
+          description: A title of pereval.
+          schema:
+            type: string
+        - name: beautyTitle
+          in: path
+          required: true
+          description: A common title of Pereval
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pereval'
+          description: ''
+      tags:
+      - perevals
+    put:
+      operationId: updatePereval
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this pereval.
+          schema:
+            type: integer
+        - name: title
+          in: path
+          required: false
+          description: A title of pereval.
+          schema:
+            type: string
+        - name: beautyTitle
+          in: path
+          required: true
+          description: A common title of Pereval
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pereval'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pereval'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Pereval'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pereval'
+          description: ''
+      tags:
+      - perevals
+    patch:
+      operationId: partialUpdatePereval
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this pereval.
+          schema:
+            type: integer
+        - name: title
+          in: path
+          required: false
+          description: A title of pereval.
+          schema:
+            type: string
+        - name: beautyTitle
+          in: path
+          required: true
+          description: A common title of Pereval
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pereval'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pereval'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Pereval'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pereval'
+          description: ''
+      tags:
+      - perevals
+    delete:
+      operationId: destroyPereval
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this pereval.
+          schema:
+            type: integer
+        - name: title
+          in: path
+          required: false
+          description: A title of pereval.
+          schema:
+            type: string
+        - name: beautyTitle
+          in: path
+          required: true
+          description: A common title of Pereval
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - perevals
+  /coords/:
+    get:
+      operationId: listCoords
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Coord'
+          description: ''
+      tags:
+        - coords
+    post:
+      operationId: createCoord
+      description: ''
+      parameters:
+        - name: latitude
+          in: path
+          required: true
+          description: A float value identifying this Coord.
+          schema:
+            type: number
+        - name: longitude
+          in: path
+          required: true
+          description: A float value identifying this Coord.
+          schema:
+            type: number
+        - name: height
+          in: path
+          required: true
+          description: A integer value identifying this Coord.
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Coord'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Coord'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Coord'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coord'
+          description: ''
+      tags:
+        - coords
+  /coords/{id}/:
+    get:
+      operationId: retrieveCoord
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this Coord.
+          schema:
+            type: integer
+        - name: latitude
+          in: path
+          required: true
+          description: A float value identifying this Coord.
+          schema:
+            type: number
+        - name: longitude
+          in: path
+          required: true
+          description: A float value identifying this Coord.
+          schema:
+            type: number
+        - name: height
+          in: path
+          required: true
+          description: A integer value identifying this Coord.
+          schema:
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coord'
+          description: ''
+      tags:
+        - coords
+    put:
+      operationId: updateCoord
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this Coord.
+          schema:
+            type: integer
+        - name: latitude
+          in: path
+          required: true
+          description: A float value identifying this Coord.
+          schema:
+            type: number
+        - name: longitude
+          in: path
+          required: true
+          description: A float value identifying this Coord.
+          schema:
+            type: number
+        - name: height
+          in: path
+          required: true
+          description: A integer value identifying this Coord.
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Coord'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Coord'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Coord'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coord'
+          description: ''
+      tags:
+        - coords
+    patch:
+      operationId: partialUpdateCoord
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this Coord.
+          schema:
+            type: integer
+        - name: latitude
+          in: path
+          required: true
+          description: A float value identifying this Coord.
+          schema:
+            type: number
+        - name: longitude
+          in: path
+          required: true
+          description: A float value identifying this Coord.
+          schema:
+            type: number
+        - name: height
+          in: path
+          required: true
+          description: A integer value identifying this Coord.
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Coord'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Coord'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Coord'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coord'
+          description: ''
+      tags:
+        - coords
+    delete:
+      operationId: destroyCoord
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this Coord.
+          schema:
+            type: integer
+        - name: latitude
+          in: path
+          required: true
+          description: A float value identifying this Coord.
+          schema:
+            type: number
+        - name: longitude
+          in: path
+          required: true
+          description: A float value identifying this Coord.
+          schema:
+            type: number
+        - name: height
+          in: path
+          required: true
+          description: A integer value identifying this Coord.
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: ''
+      tags:
+        - coords
+  /levels/:
+    get:
+      operationId: listLevels
+      description: ''
+      parameters: [ ]
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Level'
+          description: ''
+      tags:
+        - levels
+    post:
+      operationId: createLevel
+      description: ''
+      parameters:
+        - name: winter
+          in: path
+          required: true
+          description: A difficulty level in winter.
+          schema:
+            type: string
+        - name: summer
+          in: path
+          required: true
+          description: A difficulty level in summer.
+          schema:
+            type: string
+        - name: autumn
+          in: path
+          required: true
+          description: A difficulty level in autumn.
+          schema:
+            type: string
+        - name: spring
+          in: path
+          required: true
+          description: A difficulty level in spring.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Level'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Level'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Level'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Level'
+          description: ''
+      tags:
+        - levels
+  /levels/{id}/:
+    get:
+      operationId: retrieveLevel
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this level.
+          schema:
+            type: integer
+        - name: winter
+          in: path
+          required: true
+          description: A difficulty level in winter.
+          schema:
+            type: string
+        - name: summer
+          in: path
+          required: true
+          description: A difficulty level in summer.
+          schema:
+            type: string
+        - name: autumn
+          in: path
+          required: true
+          description: A difficulty level in autumn.
+          schema:
+            type: string
+        - name: spring
+          in: path
+          required: true
+          description: A difficulty level in spring.
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Level'
+          description: ''
+      tags:
+        - levels
+    put:
+      operationId: updateLevel
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this level.
+          schema:
+            type: integer
+        - name: winter
+          in: path
+          required: true
+          description: A difficulty level in winter.
+          schema:
+            type: string
+        - name: summer
+          in: path
+          required: true
+          description: A difficulty level in summer.
+          schema:
+            type: string
+        - name: autumn
+          in: path
+          required: true
+          description: A difficulty level in autumn.
+          schema:
+            type: string
+        - name: spring
+          in: path
+          required: true
+          description: A difficulty level in spring.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Level'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Level'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Level'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Level'
+          description: ''
+      tags:
+        - levels
+    patch:
+      operationId: partialUpdateLevel
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this level.
+          schema:
+            type: integer
+        - name: winter
+          in: path
+          required: true
+          description: A difficulty level in winter.
+          schema:
+            type: string
+        - name: summer
+          in: path
+          required: true
+          description: A difficulty level in summer.
+          schema:
+            type: string
+        - name: autumn
+          in: path
+          required: true
+          description: A difficulty level in autumn.
+          schema:
+            type: string
+        - name: spring
+          in: path
+          required: true
+          description: A difficulty level in spring.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Level'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Level'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Level'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Level'
+          description: ''
+      tags:
+        - levels
+    delete:
+      operationId: destroyLevel
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this level.
+          schema:
+            type: integer
+        - name: winter
+          in: path
+          required: true
+          description: A difficulty level in winter.
+          schema:
+            type: string
+        - name: summer
+          in: path
+          required: true
+          description: A difficulty level in summer.
+          schema:
+            type: string
+        - name: autumn
+          in: path
+          required: true
+          description: A difficulty level in autumn.
+          schema:
+            type: string
+        - name: spring
+          in: path
+          required: true
+          description: A difficulty level in spring.
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+        - levels
+  /users/:
+    get:
+      operationId: listUsers
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+        - users
+    post:
+      operationId: createUser
+      description: ''
+      parameters:
+        - name: email
+          in: path
+          required: true
+          description: A unique email of User
+          schema:
+            type: string
+        - name: full_name
+          in: path
+          required: true
+          description: A name of User
+          schema:
+            type: string
+        - name: phone
+          in: path
+          required: true
+          description: A phone of User
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+        - users
+  /users/{id}/:
+    get:
+      operationId: retrieveUser
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this User.
+          schema:
+            type: integer
+        - name: email
+          in: path
+          required: true
+          description: A unique email of User
+          schema:
+            type: string
+        - name: full_name
+          in: path
+          required: true
+          description: A name of User
+          schema:
+            type: string
+        - name: phone
+          in: path
+          required: true
+          description: A phone of User
+          schema:
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+        - users
+    put:
+      operationId: updateUser
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this User.
+          schema:
+            type: integer
+        - name: email
+          in: path
+          required: true
+          description: A unique email of User
+          schema:
+            type: string
+        - name: full_name
+          in: path
+          required: true
+          description: A name of User
+          schema:
+            type: string
+        - name: phone
+          in: path
+          required: true
+          description: A phone of User
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+        - users
+    patch:
+      operationId: partialUpdateUser
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this User.
+          schema:
+            type: integer
+        - name: email
+          in: path
+          required: true
+          description: A unique email of User
+          schema:
+            type: string
+        - name: full_name
+          in: path
+          required: true
+          description: A name of User
+          schema:
+            type: string
+        - name: phone
+          in: path
+          required: true
+          description: A phone of User
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+        - users
+    delete:
+      operationId: destroyUser
+      description: ''
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this User.
+          schema:
+            type: integer
+        - name: email
+          in: path
+          required: true
+          description: A unique email of User
+          schema:
+            type: string
+        - name: full_name
+          in: path
+          required: true
+          description: A name of User
+          schema:
+            type: string
+        - name: phone
+          in: path
+          required: true
+          description: A phone of User
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: ''
+      tags:
+        - users
+components:
+  schemas:
+    Pereval:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: false
+        beautyTitle:
+          type: string
+          maxLength: 200
+        title:
+          type: string
+          maxLength: 200
+        connect:
+          type: string
+          maxLength: 200
+        level_id:
+          type: object
+          x-foreign-key: Level
+        coord_id:
+          type: object
+          x-foreign-key: Coord
+        user_id:
+          type: object
+          x-foreign-key: User
+        images:
+          type: object
+          format: binary
+        url:
+          type: string
+          readOnly: true
+      required:
+      - title
+    Coord:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: false
+        latitude:
+          type: number
+          readOnly: false
+        longitude:
+          type: number
+          readOnly: false
+        height:
+          type: integer
+          readOnly: false
+        url:
+          type: string
+          readOnly: true
+      required:
+        - id
+    Level:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: false
+        winter:
+          type: string
+          readOnly: false
+        summer:
+          type: string
+          readOnly: false
+        autumn:
+          type: string
+          readOnly: false
+        spring:
+          type: string
+          readOnly: false
+        url:
+          type: string
+          readOnly: true
+      required:
+      - id
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: false
+        email:
+          type: string
+          maxLength: 128
+        full_name:
+          type: string
+          maxLength: 128
+        phone:
+          type: integer
+      required:
+        - id
+
