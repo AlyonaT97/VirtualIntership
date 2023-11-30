@@ -45,7 +45,6 @@ class PerevalsSerializer(serializers.ModelSerializer):
     user_id = UsersSerializer()
     coord_id = CoordsSerializer()
     level_id = LevelSerializer(allow_null=True)
-    images = ImagesSerializer(many=True)
 
     def validate(self, data):
         if self.instance is not None:
@@ -66,4 +65,4 @@ class PerevalsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Perevals
-        fields = ['beautyTitle', 'title', 'connect', 'status', 'add_time', 'level_id', 'coord_id', 'user_id', 'images']
+        fields = ['beauty_title', 'title', 'connect', 'status', 'add_time', 'level_id', 'coord_id', 'user_id']

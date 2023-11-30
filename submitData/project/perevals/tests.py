@@ -1,5 +1,4 @@
 from django.urls import reverse
-from django.conf import settings
 from rest_framework import status
 
 from django.test import TestCase
@@ -7,9 +6,6 @@ from rest_framework.test import APITestCase
 
 from .models import Perevals, Coords, Users, Level
 from .serializers import PerevalsSerializer
-
-
-settings.configure(DEBUG=True)
 
 
 class MountApiTestCase(APITestCase):
@@ -21,9 +17,9 @@ class MountApiTestCase(APITestCase):
         coord_2 = Coords.objects.create(latitude=47.9237, longitude=23.4572, height=4579)
         level_1 = Level.objects.create(winter='3a', summer='2a', autumn='2b', spring='2b')
         level_2 = Level.objects.create(winter='4a', summer='3a', autumn='3b', spring='3b')
-        self.mount_1 = Perevals.objects.create(beautyTitle='beautyTitle1', title='title1', other_titles='other_titles1',
+        self.mount_1 = Perevals.objects.create(beauty_title='beauty_title', title='title1', other_titles='other_titles1',
                                                connect='', status='PN', level_id=level_1, user_id=user_1, coord_id=coord_1)
-        self.mount_2 = Perevals.objects.create(beautyTitle='beautyTitle2', title='title2', other_titles='other_titles2',
+        self.mount_2 = Perevals.objects.create(beauty_title='beauty_title2', title='title2', other_titles='other_titles2',
                                                connect='', status='NW', level_id=level_2, user_id=user_2, coord_id=coord_2)
 
     def test_get_list(self):
@@ -51,10 +47,10 @@ class MountSerializerTestCase(TestCase):
         coord_2 = Coords.objects.create(latitude=47.9237, longitude=23.4572, height=4579)
         level_1 = Level.objects.create(winter='3a', summer='2a', autumn='2b', spring='2b')
         level_2 = Level.objects.create(winter='4a', summer='3a', autumn='3b', spring='3b')
-        self.mount_1 = Perevals.objects.create(beautyTitle='beautyTitle1', title='title1', other_titles='other_titles1',
+        self.mount_1 = Perevals.objects.create(beauty_title='beauty_title', title='title1', other_titles='other_titles1',
                                                connect='', status='PN', level_id=level_1, user_id=user_1,
                                                coord_id=coord_1)
-        self.mount_2 = Perevals.objects.create(beautyTitle='beautyTitle2', title='title2', other_titles='other_titles2',
+        self.mount_2 = Perevals.objects.create(beauty_title='beauty_title2', title='title2', other_titles='other_titles2',
                                                connect='', status='NW', level_id=level_2, user_id=user_2,
                                                coord_id=coord_2)
 
@@ -64,7 +60,7 @@ class MountSerializerTestCase(TestCase):
         expected_data = [
             {
                 'id': 1,
-                'beautyTitle': 'beautyTitle1',
+                'beauty_title': 'beauty_title',
                 'title': 'title1',
                 'other_titles': 'other_titles1',
                 'connect': '',
@@ -88,11 +84,10 @@ class MountSerializerTestCase(TestCase):
                     'longitude': 6.3209,
                     'height': 3453
                 },
-                'images': []
             },
             {
                 'id': 2,
-                'beautyTitle': 'beautyTitle2',
+                'beauty_title': 'beauty_title2',
                 'title': 'title2',
                 'other_titles': 'other_titles2',
                 'connect': '',
@@ -116,7 +111,6 @@ class MountSerializerTestCase(TestCase):
                     'longitude': 23.4572,
                     'height': 4579
                 },
-                'images': []
             }
         ]
 

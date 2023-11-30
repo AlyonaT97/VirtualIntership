@@ -27,7 +27,7 @@ class PerevalsViewset(viewsets.ModelViewSet):
     queryset = Perevals.objects.all()
     serializer_class = PerevalsSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = ['beautyTitle', 'title', 'add_time', 'user_id__email']
+    filterset_fields = ['beauty_title', 'title', 'add_time', 'user_id__email']
 
     def update(self, request, *args, **kwargs):
         record = self.get_object()

@@ -55,7 +55,7 @@ class Perevals(models.Model):
         (rejected, 'Отклонено')
     ]
 
-    beautyTitle = models.CharField(max_length=200, verbose_name='Общее название')
+    beauty_title = models.CharField(max_length=200, verbose_name='Общее название')
     title = models.CharField(max_length=200, verbose_name='Название перевала')
     other_titles = models.CharField(max_length=200)
     connect = models.CharField(max_length=200)
@@ -67,7 +67,7 @@ class Perevals(models.Model):
     coord_id = models.OneToOneField(Coords, on_delete=models.CASCADE)
 
     def str(self):
-        return f'Это перевал №{self.pk} под названием "{self.beautyTitle}"'
+        return f'Это перевал №{self.pk} под названием "{self.beauty_title}"'
 
 
 class PerevalAreas(models.Model):

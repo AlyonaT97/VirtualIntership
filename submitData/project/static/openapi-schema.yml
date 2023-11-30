@@ -29,7 +29,7 @@ paths:
           description: A title of Pereval.
           schema:
             type: string
-        - name: beautyTitle
+        - name: beauty_title
           in: path
           required: true
           description: A common title of Pereval
@@ -65,6 +65,12 @@ paths:
           description: User created this Pereval
           schema:
             type: integer
+        - name: images
+          in: path
+          required: true
+          description: An image of Pereval
+          schema:
+            type: array
       requestBody:
         content:
           application/json:
@@ -102,7 +108,7 @@ paths:
           description: A title of pereval.
           schema:
             type: string
-        - name: beautyTitle
+        - name: beauty_title
           in: path
           required: true
           description: A common title of Pereval
@@ -133,7 +139,7 @@ paths:
           description: A title of pereval.
           schema:
             type: string
-        - name: beautyTitle
+        - name: beauty_title
           in: path
           required: true
           description: A common title of Pereval
@@ -175,7 +181,7 @@ paths:
           description: A title of pereval.
           schema:
             type: string
-        - name: beautyTitle
+        - name: beauty_title
           in: path
           required: true
           description: A common title of Pereval
@@ -217,7 +223,7 @@ paths:
           description: A title of pereval.
           schema:
             type: string
-        - name: beautyTitle
+        - name: beauty_title
           in: path
           required: true
           description: A common title of Pereval
@@ -941,7 +947,7 @@ components:
         id:
           type: integer
           readOnly: false
-        beautyTitle:
+        beauty_title:
           type: string
           maxLength: 200
         title:
@@ -955,12 +961,12 @@ components:
           x-foreign-key: Level
         coord_id:
           type: object
-          x-foreign-key: Coord
+          x-backref: Coord
         user_id:
           type: object
           x-foreign-key: User
         images:
-          type: object
+          type: array
           format: binary
         url:
           type: string
