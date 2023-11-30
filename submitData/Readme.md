@@ -33,12 +33,12 @@ tourist push the button 'Send', the mobile app calls submitData methode which ac
   "height": "1200"}
  
  
-  level:{"winter": "", //Категория трудности. В разное время года перевал может иметь разную категорию трудности
+   "level":{"winter": "", //Категория трудности. В разное время года перевал может иметь разную категорию трудности
   "summer": "1А",
   "autumn": "1А",
   "spring": ""},
  
-   images: [{data:"<картинка1>", title:"Седловина"}, {data:"<картинка>", title:"Подъём"}]
+   "images": [{data:"<картинка1>", title:"Седловина"}, {data:"<картинка>", title:"Подъём"}]
 }
 ```
 
