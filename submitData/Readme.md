@@ -38,7 +38,7 @@ tourist push the button 'Send', the mobile app calls submitData methode which ac
   "autumn": "1А",
   "spring": ""},
  
-   "images": [{data:"<картинка1>", title:"Седловина"}, {data:"<картинка>", title:"Подъём"}]
+   "images": [{"data":"<картинка1>", "title":"Седловина"}, {"data":"<картинка>", "title":"Подъём"}]
 }
 ```
 
