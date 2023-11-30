@@ -77,7 +77,7 @@ class PerevalAreas(models.Model):
 class Images(models.Model):
     title = models.CharField(max_length=128, verbose_name='Название изображения')
     date_added = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
-    image = models.ImageField(verbose_name='Изображение', upload_to='images')
+    image = models.ImageField(verbose_name='Изображение', upload_to='images', blank=True, null=True)
 
     pereval_id = models.ForeignKey(Perevals, on_delete=models.CASCADE)
 
