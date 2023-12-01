@@ -31,6 +31,7 @@ router.register(r'images', views.ImagesViewset)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('submitData/', include('rest_framework.urls', namespace='rest_framework')),
+    path('perevals/', include('perevals.urls')),
     path('', include(router.urls)),
     path('swagger-ui/', TemplateView.as_view(
         template_name='swagger-ui.html',

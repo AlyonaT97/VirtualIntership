@@ -29,10 +29,13 @@ class PerevalsViewset(viewsets.ModelViewSet):
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = ['beauty_title', 'title', 'add_time', 'user_id__email']
 
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
     def update(self, request, *args, **kwargs):
         record = self.get_object()
         if record.status == 'NW':
-            serializer = PerevalsSerializer(record, data=request.data, partial=True)
+            serializer = self.get_serializer(record, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
                 return Response(
